@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhaojunjie.mapper.TbHumitureMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhaojunjie.bean.TbHumiture">
+        <id column="uid" property="uid" />
+        <result column="temperature" property="temperature" />
+        <result column="humidity" property="humidity" />
+        <result column="time" property="time" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        uid, temperature, humidity, time
+    </sql>
+    <select id="selectAll" resultMap="BaseResultMap">
+    /*select 后面查询的信息范围要大于或等于 对应类中的属性*/
+        select * from tb_humiture
+    </select>
+    <select id="selectById" resultMap="BaseResultMap" parameterType="int">
+        select * from tb_humiture where uid=#{id}
+    </select>
+    <insert id="insertItem" parameterType="com.zhaojunjie.bean.TbHumiture" flushCache="false">
+        insert into tb_humiture(uid,temperature,humidity,time) values (#{uid},#{temperature},#{humidity},#{time})
+    </insert>
+
+    <select id="inquireMaxUid" resultType="int" >
+        select MAX(uid) from tb_humiture
+    </select>
+</mapper>
