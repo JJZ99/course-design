@@ -1,9 +1,5 @@
 package com.zhaojunjie.net;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -12,13 +8,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * https://blog.csdn.net/weixin_43211195/article/details/107061038
  * https://blog.csdn.net/youbitch1/article/details/106117173
  */
+@Component
 public class RestMock{
 
     private RestTemplateConfig restTemplateConfig = new RestTemplateConfig();
-
-
 
     private RestTemplate restTemplate = restTemplateConfig.restTemplate();
 

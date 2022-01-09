@@ -7,8 +7,11 @@ import org.springframework.stereotype.Component;
 /***
  * @description 获取Application配置数据
  */
+@Component
+@Getter
 public class ApplicationValues {
 
+    @Value("${http_pool.max_total}")
     private int maxTotal = 200;
 
     private int maxPerRoute = 100;

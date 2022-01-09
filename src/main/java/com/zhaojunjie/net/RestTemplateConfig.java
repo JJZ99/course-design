@@ -10,28 +10,27 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-@Configuration
+
 public class RestTemplateConfig {
 
     private ApplicationValues appValues = new ApplicationValues();
 
-    @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate(httpRequestFactory());
     }
 
-    @Bean
     public ClientHttpRequestFactory httpRequestFactory() {
         return new HttpComponentsClientHttpRequestFactory(httpClient());
     }
 
-    @Bean
     public HttpClient httpClient() {
         Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create()
                 .register("http", PlainConnectionSocketFactory.getSocketFactory())

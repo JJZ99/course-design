@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>所有信息</title>
+    <style type="text/css">
+        #empTable{
+            width: 80%;
+            border: 1px solid blue;
+            margin: 0px auto;
+        }
+        #empTable th,td{
+            border: 1px solid green;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table align="center" id="temTable" cellpadding="0px" cellspacing="0px" width="75%">
+        <tr>
+            <th>索引</th>
+            <th>温度</th>
+            <th>时间</th>
+        </tr>
+        <tr th:each="tem,i:${tems}">
+            <td width="15%" th:text="${tem.uid}"></td>
+            <td width="30%"  th:text="${tem.value}"℃></td>
+            <td width="50%"  th:text="${tem.time}"></td>
+        </tr>
+    </table>
+    <hr/>
+    <table  id="humTable" cellpadding="0px" cellspacing="0px" align="center"  width="75%">
+        <tr>
+            <th>索引</th>
+            <th>湿度</th>
+            <th>时间</th>
+        </tr>
+        <tr th:each="hum,i:${hums}">
+            <td width="15%" th:text="${hum.uid}"></td>
+            <td width="30%"  th:text="${hum.value}"%></td>
+            <td width="50%"  th:text="${hum.time}"></td>
+        </tr>
+    </table>
+</body>
+</html>
