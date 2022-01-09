@@ -10,6 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static com.zhaojunjie.util.DateUtil.getCurrDate;
+import static com.zhaojunjie.util.DateUtil.getCurrTimeStampe;
+
 @Service
 public class TbServiceImpl extends ServiceImpl<TbHumitureMapper, TbHumiture> implements TbService {
     @Autowired
@@ -27,8 +30,9 @@ public class TbServiceImpl extends ServiceImpl<TbHumitureMapper, TbHumiture> imp
 
     @Override
     public int insertItem()  {
-        int maxUid = tbHumitureMapper.inquireMaxUid();
-        TbHumiture humiture = new TbHumiture(maxUid+1,"35","29",getCurrDate());
+        //int maxUid = tbHumitureMapper.inquireMaxUid();
+
+        TbHumiture humiture = new TbHumiture("35", getCurrTimeStampe());
         return tbHumitureMapper.insertItem(humiture);
     }
 
@@ -37,8 +41,4 @@ public class TbServiceImpl extends ServiceImpl<TbHumitureMapper, TbHumiture> imp
         return tbHumitureMapper.inquireMaxUid();
     }
 
-    public String getCurrDate(){
-        Date d = new Date();
-        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
-    }
 }

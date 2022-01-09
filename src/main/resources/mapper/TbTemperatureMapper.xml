@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zhaojunjie.mapper.TbHumitureMapper">
+<mapper namespace="com.zhaojunjie.mapper.TbTemperatureMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.zhaojunjie.bean.TbHumiture">
+    <resultMap id="BaseResultMap" type="com.zhaojunjie.bean.TbTemperature">
         <id column="uid" property="uid" />
         <result column="value" property="value" />
         <result column="time" property="time" />
@@ -11,20 +11,15 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        uid, temperature, humidity, time
+        uid, value, time
     </sql>
+
     <select id="selectAll" resultMap="BaseResultMap">
     /*select 后面查询的信息范围要大于或等于 对应类中的属性*/
-        select * from tb_humiture
+        select * from tb_temperature
     </select>
-    <select id="selectById" resultMap="BaseResultMap" parameterType="int">
-        select * from tb_humiture where uid=#{id}
-    </select>
-    <insert id="insertItem" parameterType="com.zhaojunjie.bean.TbHumiture" flushCache="false">
-        insert into tb_humiture(uid,value,time) values (#{uid},#{value},#{time})
-    </insert>
 
     <select id="inquireMaxUid" resultType="int" >
-        select MAX(uid) from tb_humiture
+        select MAX(uid) from tb_temperature
     </select>
 </mapper>

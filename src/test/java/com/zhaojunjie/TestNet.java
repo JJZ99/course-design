@@ -1,5 +1,8 @@
 package com.zhaojunjie;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.zhaojunjie.bean.TbHumiture;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.config.Registry;
@@ -10,7 +13,6 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.json.JSONArray;
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpRequestFactory;
@@ -48,6 +50,9 @@ public class TestNet {
 
         for (int i = 0; i < jsonObject.length(); i++) {
             System.out.println("key值="+jsonObject.get(i));
+            JSONObject json = JSON.parseObject(jsonObject.get(i).toString());
+            System.out.println(json.toJavaObject(TbHumiture.class).toString());
+           // System.out.println(new TbHumiture(json.optString("value"),json.optString("time")));
         }
 
 

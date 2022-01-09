@@ -16,11 +16,11 @@ public final class DateUtil {
     }
 
     /**
-     * 获取当前的时间戳string
+     * 获取当前的时间戳string 单位秒
      * @return
      */
     public static String getCurrTimeStampe(){
-        return String.valueOf(System.currentTimeMillis());
+        return String.valueOf(System.currentTimeMillis()/1000);
     }
 
     /**
